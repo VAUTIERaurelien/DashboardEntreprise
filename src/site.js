@@ -59,7 +59,7 @@ class Site {
   }
 
   async getLastReleaseGIT() {
-    const gitRes = await $.getJSON("https://api.github.com/repos/VAUTIERaurelien/Link/releases");
+    const gitRes = await $.getJSON("https://api.github.com/repos/VAUTIERaurelien/DashboardEntreprise/releases");
     localStorage.setItem('git.dataFreshness', new Date().getTime());
     let url = gitRes[0].html_url;
     let text = `Version ${this.version}`;
@@ -71,7 +71,7 @@ class Site {
     if (gitRes[0].tag_name < this.version) {
       text = `Version ${this.version} (BETA)`;
       color = 'warning';
-      url = 'https://github.com/VAUTIERaurelien/Link/tree/prod';
+      url = 'https://github.com/VAUTIERaurelien/DashboardEntreprise/tree/prod';
     };
     localStorage.setItem('git.text', text);
     localStorage.setItem('git.color', color);
