@@ -1,0 +1,16 @@
+<div align="center">
+	<img src="src/assets/favicon.ico">
+	<img src="src/assets/preview.png" width="512px">
+</div>
+
+## Context
+
+This project is based on the observation that in companies, there are proxies and administrator rights that annoy us. So, everything is set up to avoid these problems.
+
+In addition, I am part of these projects that have 50,000 tools to bookmark. So why not have a page grouping all these links, a little prettier and with some bonus features, like sharing all this within a team?
+
+## Start
+
+- Download the project in your documents
+- Open the html file on your favorite browser
+- Every time you click on a save button it will offer you to save a `bbd-DashboardEntreprise.js` file in your documents.

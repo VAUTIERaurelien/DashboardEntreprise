@@ -1,0 +1,160 @@
+<!DOCTYPE>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Entreprise</title>
+  <link rel="shortcut icon" href="src/assets/favicon.ico" type="image/x-icon">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/bootstrap-table.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/bootstrap-table.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://www.unpkg.com/ace-builds@latest/src-noconflict/ace.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+  <link rel="stylesheet" href="src/assets/site.css">
+  <script src="src/database/default.js"></script>
+  <script src="../bdd-DashboardEntreprise.js"></script>
+  <script src="src/database/BDD.js"></script>
+  <script src="src/components/template.js"></script>
+  <script src="src/content.js"></script>
+  <script src="src/page.js"></script>
+  <script src="src/site.js"></script>
+</head>
+
+<body data-bs-theme="auto">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="navbar-brand dropdown">
+          <button class="nav-link dropdown-toggle p-0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="src/assets/favicon.ico" height="40px">
+          </button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#Page_modal"
+                class="btn btn-outline-secondary" id="Page__new">Add Page</button></li>
+            <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#Site_modal">Settings</button></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="Page_btns__container"><!-- --- btns Page --- --></ul>
+      </div>
+    </div>
+  </nav>
+  <div class="modal" id="Site_modal" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content" style="height: -webkit-fill-available;">
+        <div class="modal-header">
+          <h5 class="modal-title">Settings</h5>
+          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <select class="form-select" id="Site__field__theme">
+                  <option value="auto">Auto</option>
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                </select>
+                <label for="Site__field__theme">Theme</label>
+              </div>
+              <div id="Site__field__addon" class="editor"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-success" id="Site__btn__save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-2">
+    <div class="row mb-3">
+      <div class="col">
+        <div id="Page__header">
+          <div class="row">
+            <div class="col">
+              <h4 class="text-center" id="Page__label"></h4>
+            </div>
+            <div class="col-auto">
+              <div class="btn-group" role="group">
+                <button data-bs-toggle="modal" data-bs-target="#Page_modal" class="btn btn-outline-secondary"
+                  id="Page__edit">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </div>
+            <div class="modal" id="Page_modal" data-bs-backdrop="static" data-bs-keyboard="false">
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content" style="height: -webkit-fill-available;">
+                  <div class="modal-header">
+                    <button class="btn btn-outline-secondary me-3" id="demoModalBtn">Demo</button>
+                    <h5 class="modal-title">Add Page</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="border" id="demoModal">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Demo</h5>
+                        <button class="btn-close" id="demoModalCloseBtn"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="accordion mt-3" id="Demo__container"><!-- --- Demo container --- --></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <input type="hidden" class="form-control" id="Page__field__id">
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" id="Page__field__name">
+                          <label>Name</label>
+                        </div>
+                        <div id="Page__field__content" class="editor"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-danger" id="Page__btn__delete">Delete</button>
+                    <button class="btn btn-outline-success" id="Page__btn__save">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="Page__container"><!-- --- items Page --- --></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<footer class="container-fluid border-top">
+  <div class="row">
+    <script type="text/template" data-template="footer">
+      <p class="text-center">
+        <a target="_blank" href="${url}"><span class="badge text-bg-${color} mt-3">${text}</span></a>
+      </p>
+    </script>
+    <div class="col" id="version"></div>
+  </div>
+</footer>
+
+</html>
