@@ -35,12 +35,14 @@ class Page {
     $('#Page_modal').on('show.bs.modal', (e) => {
       switch (e.relatedTarget.id) {
         case 'Page__new':
+          $('#Page_modal_title').html('New Page');
           $('#Page__btn__delete').hide();
           $('#Page__field__id').val(-1);
           $('#Page__field__name').val('');
           editor.setValue('', -1);
           break;
         case 'Page__edit':
+          $('#Page_modal_title').html(`Edit Page: ${this.name}`);
           if (data.pages.length === 1) {
             $('#Page__btn__delete').hide();
           } else {
