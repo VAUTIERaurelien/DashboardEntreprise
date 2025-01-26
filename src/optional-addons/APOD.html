@@ -1,0 +1,87 @@
+<script>
+  class APOD extends Content {
+    //for generate api key https://api.nasa.gov/
+    API_KEY = '';
+    API = 'https://api.nasa.gov/planetary/apod?api_key=';
+    data;
+    constructor() {
+      super();
+      this.getData();
+    }
+
+    async getData(){
+      this.data = JSON.parse(sessionStorage.getItem('apod'));
+      const dateMax = new Date().getTime() - 10800000;
+      const dataFreshness = new Date(this.data?.date).getTime();
+      if (dateMax > dataFreshness){
+        await $.getJSON(this.API + this.API_KEY, (data) => {
+          data.date = new Date().getTime();
+          sessionStorage.setItem('apod', JSON.stringify(data));
+          this.data = data;
+        });
+      }
+      this.render()
+    }
+    
+    render(){
+      for (const element of $('apod')) {
+        if (!$(element).parents('code').length) {
+          let content;
+          switch (this.data.media_type) {
+            case 'image':
+              content = `<img class="img img-fluid d-block mx-auto" src="${this.data.url}">`;
+              break;
+            default:
+              content = `<strong>Media type not define: ${this.data.media_type}</strong><img class="img img-fluid d-block mx-auto" src="src/assets/favicon.ico">`;
+              break;
+          }
+          if (this.data.media_type === 'image') 
+          $(element).replaceWith(`
+            <div class="row">
+              <div class="col">
+                <div class="card ${element.className}" id="${element.id}">
+                  <div class="card-header">
+                    <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">${this.data.title}</a>
+                  </div>
+                  <div class="card-body">
+                    ${content}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `);
+        };
+      }
+    }
+
+    static demo(parentId = 'Demo__container') {
+      $(`#${parentId}`).append(`
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${parentId}APOD"
+            aria-expanded="false" aria-controls="${parentId}APOD">
+            APOD
+          </button>
+        </h2>
+        <div id="${parentId}APOD" class="accordion-collapse collapse" data-bs-parent="#${parentId}">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col">
+                <APOD>My Addon</APOD>
+              </div>
+              <div class="col">
+                <pre class="md">
+\`\`\`html
+<APOD>My Addon</APOD>
+\`\`\`
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`);
+    }
+  }
+
+  contents.push('APOD')
+</script>

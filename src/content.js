@@ -55,7 +55,6 @@ class BtnLink extends Content {
     super();
     for (const element of $('btnlink')) {
       if (!$(element).parents('code').length) {
-
         let favicon = $(element).attr('favicon');
         if (!favicon) {
           const domain = $(element).attr('href').split('/')[2];
@@ -124,8 +123,7 @@ class Separation extends Content {
           ${element.className.includes('center') | element.className.includes('end') ? '<div class="col"><hr></div>' : ''}
           <div class="col-auto"><h4>${element.innerHTML}</h4></div>
           ${element.className.includes('center') | element.className.includes('start') ? '<div class="col"><hr></div>' : ''}
-        </div>
-        `);
+        </div>`);
       };
     }
   }
