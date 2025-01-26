@@ -96,7 +96,7 @@ class BtnLink extends Content {
               <btnlink class="col mb-3" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
                 taget="_blank">
                 Bootstrap</btnlink>
-              <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/Link" taget="_blank">Link</btnlink>
+              <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/DashboardEntreprise" taget="_blank">DashboardEntreprise</btnlink>
               <btnlink class="col mb-3" href="setFavicon" favicon="src/assets/favicon.ico" taget="_blank">Set favicon
               </btnlink>
             </div>
@@ -104,7 +104,7 @@ class BtnLink extends Content {
 \`\`\`html
 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
   <btnlink class="col mb-3" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" taget="_blank">Bootstrap</btnlink>
-  <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/Link" taget="_blank">Link</btnlink>
+  <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/DashboardEntreprise" taget="_blank">DashboardEntreprise</btnlink>
   <btnlink class="col mb-3" href="setFavicon" favicon="src/assets/favicon.ico" taget="_blank">Set favicon</btnlink>
 </div>
 \`\`\`
