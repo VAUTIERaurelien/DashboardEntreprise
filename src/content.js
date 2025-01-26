@@ -68,8 +68,7 @@ class BtnLink extends Content {
                 <div class="col">
                   <a href="${$(element).attr('href')}" target="${$(element).attr('target')}">
                     <div class="row Link__card">
-                      <div class="col-auto d-flex align-items-center">
-                        <img class="mx-2 Link__img" src="${favicon}"></div>
+                      <img class="mx-2 Link__img" src="${favicon}">
                       <div class="col d-flex align-items-center justify-content-center px-0 text-dark">${element.innerHTML}</div>
                     </div>
                   </a>
