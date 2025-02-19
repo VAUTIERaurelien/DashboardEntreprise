@@ -90,8 +90,8 @@ class BtnLinkDropdown extends Content {
         <div id="${parentId}BtnLinkDropdown" class="accordion-collapse collapse" data-bs-parent="#${parentId}">
           <div class="accordion-body">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
-                <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown" taget="_blank">
-                  <ul class="dropdown-menu dropdown-menu-light">
+                <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown">
+                  <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap</a></li>
                     <li><a class="dropdown-item" target="_blank" href="https://github.com/VAUTIERaurelien/DashboardEntreprise">DashboardEntreprise</a></li>
                   </ul>
@@ -100,8 +100,8 @@ class BtnLinkDropdown extends Content {
             <pre class="md">
 \`\`\`html
 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
-  <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown" taget="_blank">
-    <ul class="dropdown-menu dropdown-menu-light">
+  <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown">
+    <ul class="dropdown-menu">
       <li><a class="dropdown-item" target="_blank" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap</a></li>
       <li><a class="dropdown-item" target="_blank" href="https://github.com/VAUTIERaurelien/DashboardEntreprise">DashboardEntreprise</a></li>
     </ul>
@@ -158,9 +158,13 @@ class BtnLink extends Content {
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
               <btnlink class="col mb-3" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
                 taget="_blank">
-                Bootstrap</btnlink>
-              <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/DashboardEntreprise" taget="_blank">DashboardEntreprise</btnlink>
-              <btnlink class="col mb-3" href="setFavicon" favicon="src/assets/favicon.ico" taget="_blank">Set favicon
+                Bootstrap
+              </btnlink>
+              <btnlink class="col mb-3" href="https://github.com/VAUTIERaurelien/DashboardEntreprise" taget="_blank">
+                DashboardEntreprise
+              </btnlink>
+              <btnlink class="col mb-3" href="setFavicon" favicon="src/assets/favicon.ico" taget="_blank">
+                Set favicon
               </btnlink>
             </div>
             <pre class="md">

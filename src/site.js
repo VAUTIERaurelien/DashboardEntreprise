@@ -1,7 +1,7 @@
 const contents = [];
 class Site {
   constructor() {
-    this.version = '1.1';
+    this.version = '1.2';
     this.theme = data.theme;
     this.addon = data.addon;
     this.colorTheme = Site.defineColorTheme(this.theme);
