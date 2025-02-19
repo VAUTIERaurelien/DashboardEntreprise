@@ -85,6 +85,7 @@ class Site {
 
 $(document).ready(() => {
   contents.push('Markdown');
+  contents.push('BtnLinkDropdown');
   contents.push('BtnLink');
   contents.push('Separation');
   contents.push('BootstrapTableBlock');

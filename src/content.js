@@ -50,6 +50,71 @@ To use markdown use this \`<pre class="md"></pre>\`
   }
 }
 
+class BtnLinkDropdown extends Content {
+  constructor() {
+    super();
+    for (const element of $('btnlinkdropdown')) {
+      if (!$(element).parents('code').length) {
+        let favicon = $(element).attr('favicon');
+        $(element).replaceWith(`
+          <div class="col ${element.className} mt-3">
+            <div class="Link bg-light border rounded">
+              <div class="row">
+                <div class="col">
+                  <div class="row Link__card dropdown">
+                    <img class="mx-2 Link__img" src="${favicon}">
+                    <div class="col d-flex align-items-center justify-content-center px-0 text-dark">
+                      <button class="btnlinkdropdown dropdown-toggle  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ${$(element).attr('label')} <span class="visually-hidden justify-content-end">Toggle Dropdown</span>
+                      </button>
+                      ${element.innerHTML}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`);
+      }
+    }
+  }
+
+  static demo(parentId = 'Demo__container') {
+    $(`#${parentId}`).append(`
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${parentId}BtnLinkDropdown"
+            aria-expanded="false" aria-controls="${parentId}BtnLinkDropdown">
+            Btn Link Dropdown
+          </button>
+        </h2>
+        <div id="${parentId}BtnLinkDropdown" class="accordion-collapse collapse" data-bs-parent="#${parentId}">
+          <div class="accordion-body">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+                <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown" taget="_blank">
+                  <ul class="dropdown-menu dropdown-menu-light">
+                    <li><a class="dropdown-item" target="_blank" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://github.com/VAUTIERaurelien/DashboardEntreprise">DashboardEntreprise</a></li>
+                  </ul>
+                </btnlinkdropdown>
+            </div>
+            <pre class="md">
+\`\`\`html
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+  <btnlinkdropdown class="col mb-3" label="Btn Link Dropdown" taget="_blank">
+    <ul class="dropdown-menu dropdown-menu-light">
+      <li><a class="dropdown-item" target="_blank" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap</a></li>
+      <li><a class="dropdown-item" target="_blank" href="https://github.com/VAUTIERaurelien/DashboardEntreprise">DashboardEntreprise</a></li>
+    </ul>
+  </btnlinkdropdown>
+</div>
+\`\`\`
+            </pre>
+          </div>
+        </div>
+      </div>`);
+  }
+}
+
 class BtnLink extends Content {
   constructor() {
     super();
@@ -83,12 +148,12 @@ class BtnLink extends Content {
     $(`#${parentId}`).append(`
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${parentId}Link"
-            aria-expanded="false" aria-controls="${parentId}Link">
-            Link
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${parentId}BtnLink"
+            aria-expanded="false" aria-controls="${parentId}BtnLink">
+            Btn Link
           </button>
         </h2>
-        <div id="${parentId}Link" class="accordion-collapse collapse" data-bs-parent="#${parentId}">
+        <div id="${parentId}BtnLink" class="accordion-collapse collapse" data-bs-parent="#${parentId}">
           <div class="accordion-body">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
               <btnlink class="col mb-3" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
