@@ -13,7 +13,7 @@
       this.data = JSON.parse(sessionStorage.getItem('apod'));
       const dateMax = new Date().getTime() - 10800000;
       const dataFreshness = new Date(this.data?.date).getTime();
-      if (dateMax > dataFreshness){
+      if (!dataFreshness || dateMax > dataFreshness){
         await $.getJSON(this.API + this.API_KEY, (data) => {
           data.date = new Date().getTime();
           sessionStorage.setItem('apod', JSON.stringify(data));
@@ -35,7 +35,6 @@
               content = `<strong>Media type not define: ${this.data.media_type}</strong><img class="img img-fluid d-block mx-auto" src="src/assets/favicon.ico">`;
               break;
           }
-          if (this.data.media_type === 'image') 
           $(element).replaceWith(`
             <div class="row">
               <div class="col">
