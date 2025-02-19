@@ -135,10 +135,21 @@ pre code {
   width: 1;
 }
 
-.Link__card .col div {
+.Link__card .col div, .Link__card .col button {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  background-color: transparent;
+  color: inherit;
+  border: 0;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+
+.Link__card .col ul{
+  left: .75rem !important;
+  right: .75rem !important;
+  text-align: center;
 }
 
 .Link__img {
